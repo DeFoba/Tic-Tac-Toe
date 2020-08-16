@@ -51,6 +51,7 @@ function checkWin() {
         }
         if (canContinue && boxes[0] == boxes[1] && boxes[1] == boxes[2]) {
             alert(`${boxes[0]} won!`);
+            isWon = false;
             break
         }
     }
