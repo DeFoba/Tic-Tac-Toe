@@ -1,0 +1,40 @@
+:root {
+    --page-packground: #fff;
+    --canvas-background: #fff;
+    --box-background: #818181;
+    --box-pressed-background-red: #a77575;
+    --box-pressed-background-blue: #8275a7;
+}
+
+html, body {
+    background: var(--page-packground);
+    margin: 0;
+    padding: 0;
+}
+
+#canvas {
+    background: var(--canvas-background);
+    transform: translate(-50%, -50%);
+    position: absolute;
+    display: flex;
+    left: 50%;
+    top: 50%;
+    width: 450px;
+    height: 450px;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.box {
+    background: var(--box-background);
+    width: 149px;
+    height: 149px;
+}
+
+.red {
+    background: var(--box-pressed-background-red);
+}
+
+.blue {
+    background: var(--box-pressed-background-blue);
+}
