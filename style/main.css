@@ -4,31 +4,81 @@
     --box-background: #818181;
     --box-pressed-background-red: #a77575;
     --box-pressed-background-blue: #8275a7;
+    --box-text-color: #fff;
 }
 
 html, body {
     background: var(--page-packground);
     margin: 0;
     padding: 0;
+    color: var(--box-text-color);
+    font-family: sans-serif;
+}
+
+#main {
+    transform: translate(-50%, -50%);
+    position: absolute;
+    left: 50%;
+    top: 50%;
 }
 
 #canvas {
     background: var(--canvas-background);
-    transform: translate(-50%, -50%);
-    position: absolute;
-    display: flex;
-    left: 50%;
-    top: 50%;
     width: 450px;
     height: 450px;
+    display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
+    box-shadow: 0 0 3vw #000;
 }
 
 .box {
     background: var(--box-background);
-    width: 149px;
-    height: 149px;
+    width: 148px;
+    height: 148px;
+    margin: 1px;
+    text-transform: uppercase;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    font-size: 250%;
+    transition: 0.15s transform;
+}
+
+.box:hover {
+    transform: scale(0.97);
+}
+
+.box:active {
+    transform: scale(0.95);
+}
+
+#toolbar {
+    width: 450px;
+    display: flex;
+    justify-content: space-around;
+    background: var(--canvas-background);
+    box-shadow: 0 0 3vw #000;
+    margin-top: 20px;
+    padding: 1px 0;
+}
+
+.toolbarBtn {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    padding: 19px 0;
+    transition: 0.15s transform, 0.15s filter;
+}
+
+.toolbarBtn:hover {
+    filter: opacity(70%);
+    transform: scale(0.97);
+}
+
+.toolbarBtn:active {
+    transform: scale(0.95);
 }
 
 .red {

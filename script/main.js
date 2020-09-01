@@ -20,18 +20,29 @@ let isWon = false;
 
 let user = 'blue';
 
-for (let i = 0; i < 9; i++) {
-    box = document.createElement('div');
-    canvas.append(box);
-    box.className = 'box';
-    if (boxRowCount >= 3) {
-        boxColumnCount += 1;
-        boxRowCount = 1;
-    } else {
+createBoxes();
+
+function createBoxes() {
+    boxColumnCount = 1;
+    boxRowCount = 0;
+
+    isWon = false;
+
+    user = 'blue';
+
+    for (let i = 0; i < 9; i++) {
+        box = document.createElement('div');
+        canvas.append(box);
+        box.className = 'box';
+        if (boxRowCount >= 3) {
+            boxColumnCount += 1;
+            boxRowCount = 1;
+        } else {
+            box.id = `${boxRowCount};${boxColumnCount}`;
+            boxRowCount += 1;
+        }
         box.id = `${boxRowCount};${boxColumnCount}`;
-        boxRowCount += 1;
     }
-    box.id = `${boxRowCount};${boxColumnCount}`;
 }
 
 function checkWin() {
@@ -51,18 +62,23 @@ function checkWin() {
         }
         if (canContinue && boxes[0] == boxes[1] && boxes[1] == boxes[2]) {
             alert(`${boxes[0]} won!`);
-            isWon = false;
+            isWon = true;
             break
         }
     }
+}
+
+function canvasClear() {
+    canvas.innerHTML = '';
+    createBoxes();
 }
 
 window.addEventListener('click', ({target}) => {
     if (target.className.split(' ')[0] == 'box' && !isWon) {
         if (target.className == 'box') {
             target.className += ` ${user}`;
-            if (user == 'red') user = 'blue';
-            else user = 'red';
+            if (user == 'red') { user = 'blue'; target.innerHTML = 'O'; }
+            else { user = 'red'; target.innerHTML = 'X'; }
             checkWin();
         }
     }
